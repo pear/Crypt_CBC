@@ -4,7 +4,12 @@
      generated package.xml files -->
 <package version="1.0">
   <name>Crypt_CBC</name>
-  <summary>The PEAR::Crypt_CBC class to emulate Perl's Crypt::CBC module</summary>
+  <summary>
+    A class to emulate Perl's Crypt::CBC module.
+  </summary>
+  <description>
+    A class to emulate Perl's Crypt::CBC module.
+  </description>
   <maintainers>
     <maintainer>
       <user>cmv</user>
@@ -14,6 +19,8 @@
   </maintainers>
   <release>
     <version>0.1</version>
+    <state>stable</state>
+    <license>PHP 2.02</license>
     <date>2002-04-25</date>
     <notes>
       This is the initial independent release of the Crypt_CBC package.

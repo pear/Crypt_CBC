@@ -136,10 +136,11 @@ class Crypt_CBC extends PEAR {
             return $this->raiseError('mcrypt module is not compiled into PHP', null, 
                 PEAR_ERROR_DIE, null, 'compile PHP using "--with-mcrypt"' );
         }
-        if (!function_exists('mcrypt_module_open')) {
-            return $this->raiseError('libmcrypt is 2.2.x', null, 
-                PEAR_ERROR_DIE, null, 'this class only works with libmcrypt 2.4.x and later' );
+        if (!function_exists('mcrypt_module_open') || !function_exists('mcrypt_generic_deinit')) {
+            return $this->raiseError('libmcrypt/PHP version insufficient', null, 
+                PEAR_ERROR_DIE, null, 'this class only works with libmcrypt >= 2.4.x and later, and PHP >= 4.1.1' );
         }
+
 
         /* seed randomizer */
 
@@ -237,6 +238,7 @@ class Crypt_CBC extends PEAR {
             $cblock = mcrypt_generic($this->TD, $iv^$block );
             $iv = $cblock;
             $crypt .= $cblock;
+            mcrypt_generic_deinit($this->TD);
         }
 
         $this->last_crypt = $crypt;
@@ -285,6 +287,7 @@ class Crypt_CBC extends PEAR {
             $block = $iv ^ mdecrypt_generic($this->TD, $cblock);
             $iv = $cblock;
             $clear .= $block;
+            mcrypt_generic_deinit($this->TD);
         }
 
         /* remove the padding from the end of the cleartext */
