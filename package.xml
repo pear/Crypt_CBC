@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "../package.dtd">
+<!-- do not use the "Type" attribute here, that one is only for
+     generated package.xml files -->
+<package version="1.0">
+  <name>Crypt_CBC</name>
+  <summary>The PEAR::Crypt_CBC class to emulate Perl's Crypt::CBC module</summary>
+  <maintainers>
+    <maintainer>
+      <user>cmv</user>
+      <name>Colin Viebrock</name>
+      <email>cmv@php.net</email>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.1</version>
+    <date>2002-04-25</date>
+    <notes>
+      This is the initial independent release of the Crypt_CBC package.
+      Some of the code probably needs to be PEAR-ified a bit more.
+    </notes>
+    <filelist>
+      <dir name="/" baseinstalldir="Crypt">
+        <file role="php">CBC.php</file>
+      </dir>
+    </filelist>
+  </release>
+</package>
