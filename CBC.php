@@ -142,7 +142,7 @@ class Crypt_CBC extends PEAR {
         }
         if (!function_exists('mcrypt_module_open')) {
             return $this->raiseError('libmcrypt version insufficient', null, 
-                PEAR_ERROR_DIE, null, 'this class requires libmcrypt >= 2.4.x, preferably >= 2.4.18' );
+                PEAR_ERROR_DIE, null, 'this class requires libmcrypt >= 2.4.x, preferably >= 2.5.5' );
         }
         if (function_exists('mcrypt_generic_deinit')) {
 			$this->deinit_function = 'mcrypt_generic_deinit';
@@ -179,9 +179,9 @@ class Crypt_CBC extends PEAR {
 
         /* initialize cipher */
 
-        $this->blocksize = mcrypt_get_block_size($this->cipher,'cbc');
-        $this->keysize = mcrypt_get_key_size($this->cipher,'cbc');
         $this->TD = mcrypt_module_open ($this->cipher, '', 'ecb', '');
+        $this->blocksize = mcrypt_enc_get_block_size($this->TD);
+        $this->keysize = mcrypt_enc_get_key_size($this->TD);
 
         /* mangle key with MD5 */
 
@@ -204,7 +204,6 @@ class Crypt_CBC extends PEAR {
 
     function _Crypt_CBC ()
     {
-        @mcrypt_generic_end($this->TD);
         @mcrypt_module_close($this->TD);
     }
 
