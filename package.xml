@@ -18,12 +18,13 @@
     </maintainer>
   </maintainers>
   <release>
-    <version>0.2</version>
+    <version>0.3</version>
     <state>stable</state>
     <license>PHP 2.02</license>
-    <date>2002-05-09</date>
+    <date>2002-05-10</date>
     <notes>
-      Bug fix for a pretty bad memory leak.
+      Previous bug fixed worked, but required PHP 4.2.0.  The class has been changed
+      to allow for more backwards compatability (back to 4.0.2)
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Crypt">
