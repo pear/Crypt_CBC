@@ -18,13 +18,12 @@
     </maintainer>
   </maintainers>
   <release>
-    <version>0.1</version>
+    <version>0.2</version>
     <state>stable</state>
     <license>PHP 2.02</license>
-    <date>2002-04-25</date>
+    <date>2002-05-09</date>
     <notes>
-      This is the initial independent release of the Crypt_CBC package.
-      Some of the code probably needs to be PEAR-ified a bit more.
+      Bug fix for a pretty bad memory leak.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Crypt">
