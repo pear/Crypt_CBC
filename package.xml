@@ -18,10 +18,10 @@
     </maintainer>
   </maintainers>
   <release>
-    <version>0.4</version>
+    <version>0.5</version>
     <state>stable</state>
     <license>PHP 2.02</license>
-    <date>2003-03-13</date>
+    <date>2008-10-01</date>
     <notes>
       Fix deinit problems.
     </notes>

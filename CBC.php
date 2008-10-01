@@ -154,10 +154,6 @@ class Crypt_CBC extends PEAR {
         }
 
 
-        /* seed randomizer */
-
-        srand ((double)microtime()*1000000);
-
         /* initialize */
 
         $this->header_spec = 'RandomIV';
