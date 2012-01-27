@@ -1,26 +1,4 @@
 <?php
-//
-// +----------------------------------------------------------------------+
-// | PHP version 4.0                                                      |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2008 The PHP Group                                |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 2.02 of the PHP license,      |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available at through the world-wide-web at                           |
-// | http://www.php.net/license/2_02.txt.                                 |
-// | If you did not receive a copy of the PHP license and are unable to   |
-// | obtain it through the world-wide-web, please send a note to          |
-// | license@php.net so we can mail you a copy immediately.               |
-// +----------------------------------------------------------------------+
-// | Authors: Colin Viebrock <colin@viebrock.ca>                          |
-// +----------------------------------------------------------------------+
-//
-// $Id$
-//
-
-require_once 'PEAR.php';
-
 
 /**
  * Class to emulate Perl's Crypt::CBC module
@@ -40,11 +18,16 @@ require_once 'PEAR.php';
  * the author of libcrypt decides to name things internally.
  *
  *
- * @version  $Revision$
- * @author   Colin Viebrock <colin@easydns.com>
- * @access   public
- * @package  Crypt
+ * @category  Encryption
+ * @package   Crypt_CBC
+ * @author    Colin Viebrock <colin@viebrock.com>
+ * @copyright 2002-2012 Colin Viebrock
+ * @version   $Revision$
+ * @license   http://www.opensource.org/licenses/bsd-license.php BSD
+ * @link      http://pear.php.net/package/Crypt_CBC
  */
+
+require_once 'PEAR.php';
 
 class Crypt_CBC extends PEAR {
 
@@ -67,56 +50,56 @@ class Crypt_CBC extends PEAR {
     /**
     * crypt resource, for 2.4.x
     * @var string
-    */  
+    */
     var $TD;
 
     /**
     * crypt deinit function, for backwards compatability
     * @var string
-    */  
+    */
     var $deinit_function;
 
     /**
     * blocksize of cipher
     * @var string
-    */    
+    */
     var $blocksize;
 
     /**
     * keysize of cipher
     * @var int
-    */    
+    */
     var $keysize;
 
     /**
     * mangled key
     * @var string
-    */        
+    */
     var $keyhash;
 
     /**
-    * source type of the initialization vector for creation  
-    * possible types are MCRYPT_RAND or MCRYPT_DEV_URANDOM or MCRYPT_DEV_RANDOM    
+    * source type of the initialization vector for creation
+    * possible types are MCRYPT_RAND or MCRYPT_DEV_URANDOM or MCRYPT_DEV_RANDOM
     * @var int
-    */            
+    */
     var $rand_source    = MCRYPT_RAND;
 
     /**
     * header
     * @var string
-    */           
+    */
     var $header_spec    = 'RandomIV';
 
     /**
     * debugging
     * @var string
-    */           
+    */
     var $_last_clear;
 
     /**
     * debugging
     * @var string
-    */              
+    */
     var $_last_crypt;
 
     /**
@@ -137,11 +120,11 @@ class Crypt_CBC extends PEAR {
     {
 
         if (!extension_loaded('mcrypt')) {
-            return $this->raiseError('mcrypt module is not compiled into PHP', null, 
+            return $this->raiseError('mcrypt module is not compiled into PHP', null,
                 PEAR_ERROR_DIE, null, 'compile PHP using "--with-mcrypt"' );
         }
         if (!function_exists('mcrypt_module_open')) {
-            return $this->raiseError('libmcrypt version insufficient', null, 
+            return $this->raiseError('libmcrypt version insufficient', null,
                 PEAR_ERROR_DIE, null, 'this class requires libmcrypt >= 2.4.x, preferably >= 2.5.5' );
         }
         if (function_exists('mcrypt_generic_deinit')) {
@@ -149,7 +132,7 @@ class Crypt_CBC extends PEAR {
 		} else if (function_exists('mcrypt_generic_end')) {
 			$this->deinit_function = 'mcrypt_generic_end';
 		} else {
-            return $this->raiseError('PHP version insufficient', null, 
+            return $this->raiseError('PHP version insufficient', null,
                 PEAR_ERROR_DIE, null, 'this class requires PHP >= 4.0.2, preferably >= 4.1.1' );
         }
 
