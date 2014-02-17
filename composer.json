@@ -1,0 +1,31 @@
+{
+    "authors": [
+        {
+            "email": "colin@viebrock.ca",
+            "name": "Colin Viebrock",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Crypt_CBC": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/Crypt_CBC",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD",
+    "name": "pear/crypt_cbc",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Crypt_CBC",
+        "source": "https://github.com/pear/Crypt_CBC"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
